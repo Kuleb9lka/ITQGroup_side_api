@@ -7,12 +7,14 @@ import com.ITQGroup.dto.DocumentShortResponseDto;
 import com.ITQGroup.service.DocumentService;
 import com.ITQGroup.util.DocumentBatchCreationUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DocumentServiceImpl implements DocumentService {
 
     private final DocumentBatchCreationUtil documentBatchCreationUtil;
@@ -20,12 +22,24 @@ public class DocumentServiceImpl implements DocumentService {
     private final DocumentClient documentClient;
 
     @Override
-    public List<DocumentShortResponseDto> fileBatchCreate() {
+    public List<DocumentShortResponseDto> batchDocumentsCreation() {
 
-        Integer docsQuantityFromFile = documentBatchCreationUtil.readDocsQuantityFromFile();
+        log.info("Entering batchDocumentsCreation() method");
+
+        log.info("Trying to get quantity from file");
+
+        Integer docsQuantityFromFile = documentBatchCreationUtil.getDocsQuantityFromFile();
+
+        log.info("{} documents will be created", docsQuantityFromFile);
 
         Long defaultSystemAuthorId = Constant.DEFAULT_SYSTEM_AUTHOR_ID;
 
-        return documentClient.batchCreate(new DocumentBatchCreateRequestDto(defaultSystemAuthorId, docsQuantityFromFile));
+        log.info("Sending create request");
+
+        List<DocumentShortResponseDto> documentShortResponseDtos = documentClient.batchCreate(new DocumentBatchCreateRequestDto(defaultSystemAuthorId, docsQuantityFromFile));
+
+        log.info("Exit batchDocumentsCreation() method");
+
+        return documentShortResponseDtos;
     }
 }
