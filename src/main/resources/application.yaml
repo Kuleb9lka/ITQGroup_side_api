@@ -11,3 +11,9 @@ api:
 document-batch-creation:
   file:
     path: src/main/resources/static/document-batch-creation-file.txt
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+  level:
+    root: info

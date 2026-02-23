@@ -30,6 +30,6 @@ public class DocumentApiController {
 
     @PostMapping("/batch-create")
     public List<DocumentShortResponseDto> docsBatchCreate(){
-        return documentService.fileBatchCreate();
+        return documentService.batchDocumentsCreation();
     }
 }
