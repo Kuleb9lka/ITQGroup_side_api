@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExceptionResponseDto {
+public class DocumentServiceExceptionResponseDto {
 
     private String errorStatus;
 

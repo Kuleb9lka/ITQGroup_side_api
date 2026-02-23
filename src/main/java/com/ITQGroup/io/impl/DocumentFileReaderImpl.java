@@ -1,7 +1,7 @@
 package com.ITQGroup.io.impl;
 
 import com.ITQGroup.constant.ExceptionConstant;
-import com.ITQGroup.exception.DocumentQuantityFileReadingException;
+import com.ITQGroup.exception.QuantityFileReadingException;
 import com.ITQGroup.io.DocumentFileReader;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -26,13 +26,13 @@ public class DocumentFileReaderImpl implements DocumentFileReader {
             String line = reader.readLine();
 
             if (line == null || line.trim().isEmpty()) {
-                throw new DocumentQuantityFileReadingException(ExceptionConstant.EMPTY_QUANTITY_FILE);
+                throw new QuantityFileReadingException(ExceptionConstant.EMPTY_QUANTITY_FILE);
             }
 
             return line.trim();
 
         } catch (IOException e) {
-            throw new DocumentQuantityFileReadingException(ExceptionConstant.FAILED_TO_READ_FILE + path);
+            throw new QuantityFileReadingException(ExceptionConstant.FAILED_TO_READ_FILE + path);
         }
     }
 }

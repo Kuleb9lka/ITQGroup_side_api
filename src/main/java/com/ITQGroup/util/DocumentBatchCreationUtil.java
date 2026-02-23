@@ -1,9 +1,8 @@
 package com.ITQGroup.util;
 
 import com.ITQGroup.constant.ExceptionConstant;
-import com.ITQGroup.exception.DocumentPositiveQuantityException;
-import com.ITQGroup.exception.DocumentQuantityFileReadingException;
-import com.ITQGroup.exception.DocumentQuantityParsingException;
+import com.ITQGroup.exception.NegativeQuantityFileException;
+import com.ITQGroup.exception.FileQuantityParsingException;
 import com.ITQGroup.io.DocumentFileReader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -26,14 +25,14 @@ public class DocumentBatchCreationUtil {
 
             if (docsQuantity <= 0){
 
-                throw new DocumentPositiveQuantityException(ExceptionConstant.DOCUMENT_QUANTITY_ZERO_OR_LESS + docsQuantity);
+                throw new NegativeQuantityFileException(ExceptionConstant.NEGATIVE_FILE_QUANTITY + docsQuantity);
             }
 
             return docsQuantity;
 
         } catch (NumberFormatException e){
 
-            throw new DocumentQuantityParsingException(ExceptionConstant.FAILED_TO_PARE_DOCUMENT_QUANTITY + quantityAsString);
+            throw new FileQuantityParsingException(ExceptionConstant.FAILED_TO_PARE_DOCUMENT_QUANTITY + quantityAsString);
         }
     }
 }

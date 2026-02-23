@@ -1,7 +1,7 @@
 package com.ITQGroup.client.decoder;
 
 import com.ITQGroup.constant.ExceptionConstant;
-import com.ITQGroup.dto.ExceptionResponseDto;
+import com.ITQGroup.dto.DocumentServiceExceptionResponseDto;
 import com.ITQGroup.exception.DocumentServiceBadRequestException;
 import com.ITQGroup.exception.DocumentServiceEmptyResponseBodyException;
 import com.ITQGroup.exception.DocumentServiceNotFoundException;
@@ -31,7 +31,7 @@ public class DocumentServiceDecoder implements ErrorDecoder {
 
         try (InputStream inputStream = response.body().asInputStream()) {
 
-            ExceptionResponseDto exceptionResponse = mapper.readValue(inputStream, ExceptionResponseDto.class);
+            DocumentServiceExceptionResponseDto exceptionResponse = mapper.readValue(inputStream, DocumentServiceExceptionResponseDto.class);
 
             return switch (response.status()) {
 
