@@ -3,6 +3,7 @@ package com.ITQGroup.util;
 import com.ITQGroup.constant.ExceptionConstant;
 import com.ITQGroup.exception.DocumentPositiveQuantityException;
 import com.ITQGroup.exception.DocumentQuantityFileReadingException;
+import com.ITQGroup.exception.DocumentQuantityParsingException;
 import com.ITQGroup.io.DocumentFileReader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -32,7 +33,7 @@ public class DocumentBatchCreationUtil {
 
         } catch (NumberFormatException e){
 
-            throw new DocumentQuantityFileReadingException(ExceptionConstant.FAILED_TO_PARE_DOCUMENT_QUANTITY + quantityAsString);
+            throw new DocumentQuantityParsingException(ExceptionConstant.FAILED_TO_PARE_DOCUMENT_QUANTITY + quantityAsString);
         }
     }
 }
