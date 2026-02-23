@@ -1,4 +1,4 @@
-package com.ITQGroup.client;
+package com.ITQGroup.client.decoder;
 
 import com.ITQGroup.constant.ExceptionConstant;
 import com.ITQGroup.dto.ExceptionResponseDto;
@@ -40,7 +40,7 @@ public class DocumentServiceDecoder implements ErrorDecoder {
                 case 400 -> new DocumentServiceBadRequestException(exceptionResponse.getErrorMessage());
 
                 default ->
-                        new DocumentServiceUnexpectedException("Unexpected status: " + response.status() + ", message: " + exceptionResponse.getErrorMessage());
+                        new DocumentServiceUnexpectedException(String.format(ExceptionConstant.UNEXPECTED_STATUS, response.status(), exceptionResponse.getErrorMessage()));
             };
 
         } catch (IOException | IllegalArgumentException e) {

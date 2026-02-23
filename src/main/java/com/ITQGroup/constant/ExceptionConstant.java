@@ -14,6 +14,9 @@ public final class ExceptionConstant {
 
     public static final String EMPTY_BODY_RESPONSE = "Empty body response: ";
 
+    public static final String UNEXPECTED_STATUS = "Unexpected status: %s, message: %s";
+
+
     private ExceptionConstant() {
     }
 }
