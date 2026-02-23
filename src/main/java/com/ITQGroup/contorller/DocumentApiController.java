@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/concurrent-safety-test")
+@RequestMapping("/documents-api")
 @RequiredArgsConstructor
 public class DocumentApiController {
 

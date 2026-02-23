@@ -10,6 +10,10 @@ public final class ExceptionConstant {
 
     public static final String FAILED_TO_PARE_DOCUMENT_QUANTITY = "Failed to parse document quantity to integer: ";
 
+    public static final String FAILED_TO_DECODE_RESPONSE = "Failed to decode response. HTTP status: ";
+
+    public static final String EMPTY_BODY_RESPONSE = "Empty body response: ";
+
     private ExceptionConstant() {
     }
 }
