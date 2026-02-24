@@ -1,5 +1,6 @@
 package com.ITQGroup.contorller;
 
+import com.ITQGroup.api.DocumentApi;
 import com.ITQGroup.dto.DocumentConcurrentRequestDto;
 import com.ITQGroup.dto.DocumentConcurrentResponseDto;
 import com.ITQGroup.dto.DocumentShortResponseDto;
@@ -17,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/documents-api")
 @RequiredArgsConstructor
-public class DocumentApiController {
+public class DocumentApiController implements DocumentApi {
 
     private final RequestRunnerService requestRunnerService;
 
@@ -30,7 +31,7 @@ public class DocumentApiController {
     }
 
     @PostMapping("/batch-create")
-    public List<DocumentShortResponseDto> docsBatchCreate(){
+    public List<DocumentShortResponseDto> docsBatchCreate() {
         return documentService.batchDocumentsCreation();
     }
 }

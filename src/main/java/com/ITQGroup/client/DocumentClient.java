@@ -23,7 +23,6 @@ public interface DocumentClient {
     List<DocumentShortResponseDto> batchCreate(@RequestBody DocumentBatchCreateRequestDto dto);
 
 
-
     @PostMapping("/send-approval/{authorId}")
     List<DocumentProcessingResultDto> sendApproval(@PathVariable("authorId") Long authorId, @RequestBody List<Long> documentIds);
 

@@ -1,8 +1,8 @@
 package com.ITQGroup.util;
 
 import com.ITQGroup.constant.ExceptionConstant;
-import com.ITQGroup.exception.NegativeQuantityFileException;
 import com.ITQGroup.exception.FileQuantityParsingException;
+import com.ITQGroup.exception.NegativeQuantityFileException;
 import com.ITQGroup.io.DocumentFileReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ public class DocumentBatchCreationUtil {
 
     private final DocumentFileReader fileReader;
 
-    public Integer getDocsQuantityFromFile(){
+    public Integer getDocsQuantityFromFile() {
 
         log.info("Entering getDocsQuantityFromFile() method");
 
@@ -25,7 +25,7 @@ public class DocumentBatchCreationUtil {
 
         String trimmedString = quantityAsString.trim();
 
-        try{
+        try {
 
             log.info("Trying to parse string to integer");
 
@@ -33,7 +33,7 @@ public class DocumentBatchCreationUtil {
 
             log.info("Documents quantity from file equals: {}", docsQuantity);
 
-            if (docsQuantity <= 0){
+            if (docsQuantity <= 0) {
 
                 log.error("Unacceptable documents quantity: {}", docsQuantity);
 
@@ -44,7 +44,7 @@ public class DocumentBatchCreationUtil {
 
             return docsQuantity;
 
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
 
             log.error("Failed to convert data from file to Integer");
 

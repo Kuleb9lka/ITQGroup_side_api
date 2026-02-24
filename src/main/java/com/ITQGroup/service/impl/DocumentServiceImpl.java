@@ -42,7 +42,7 @@ public class DocumentServiceImpl implements DocumentService {
 
         long end = System.nanoTime();
 
-        log.info("Exit batchDocumentsCreation() method. Execution time: {}", end-start);
+        log.info("Exit batchDocumentsCreation() method. Execution time: {}", end - start);
 
         return documentShortResponseDtos;
     }
