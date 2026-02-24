@@ -5,6 +5,7 @@ import com.ITQGroup.dto.DocumentConcurrentResponseDto;
 import com.ITQGroup.dto.DocumentShortResponseDto;
 import com.ITQGroup.service.DocumentService;
 import com.ITQGroup.service.RequestRunnerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class DocumentApiController {
     private final DocumentService documentService;
 
     @PostMapping
-    public DocumentConcurrentResponseDto checkDocumentApprovingSafety(@RequestBody DocumentConcurrentRequestDto dto) {
+    public DocumentConcurrentResponseDto checkDocumentApprovingSafety(@RequestBody @Valid DocumentConcurrentRequestDto dto) {
 
         return requestRunnerService.run(dto.getThreads(), dto.getAttempts(), dto.getAuthorId(), dto.getDocumentId());
     }

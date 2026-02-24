@@ -24,6 +24,8 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public List<DocumentShortResponseDto> batchDocumentsCreation() {
 
+        long start = System.nanoTime();
+
         log.info("Entering batchDocumentsCreation() method");
 
         log.info("Trying to get quantity from file");
@@ -38,7 +40,9 @@ public class DocumentServiceImpl implements DocumentService {
 
         List<DocumentShortResponseDto> documentShortResponseDtos = documentClient.batchCreate(new DocumentBatchCreateRequestDto(defaultSystemAuthorId, docsQuantityFromFile));
 
-        log.info("Exit batchDocumentsCreation() method");
+        long end = System.nanoTime();
+
+        log.info("Exit batchDocumentsCreation() method. Execution time: {}", end-start);
 
         return documentShortResponseDtos;
     }
