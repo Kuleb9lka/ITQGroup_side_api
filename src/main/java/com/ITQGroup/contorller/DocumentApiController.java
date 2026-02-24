@@ -31,7 +31,7 @@ public class DocumentApiController implements DocumentApi {
     }
 
     @PostMapping("/batch-create")
-    public List<DocumentShortResponseDto> docsBatchCreate(){
+    public List<DocumentShortResponseDto> docsBatchCreate() {
         return documentService.batchDocumentsCreation();
     }
 }
