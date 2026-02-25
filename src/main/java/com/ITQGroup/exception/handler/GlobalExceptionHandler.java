@@ -9,10 +9,14 @@ import com.ITQGroup.exception.DocumentServiceUnexpectedException;
 import com.ITQGroup.exception.FileQuantityParsingException;
 import com.ITQGroup.exception.NegativeQuantityFileException;
 import com.ITQGroup.exception.QuantityFileReadingException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -63,6 +67,15 @@ public class GlobalExceptionHandler {
     public ErrorResponseDto handleException(Exception exception) {
 
         return new ErrorResponseDto(exception.getMessage(), ErrorResponseCode.INTERNAL_SERVER_ERROR.name(), LocalDateTime.now());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<List<ErrorResponseDto>> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+
+        List<ErrorResponseDto> exceptionResponseDtos = ex.getBindingResult().getFieldErrors().stream()
+                .map(error -> new ErrorResponseDto(ErrorResponseCode.BAD_REQUEST.name(), error.getDefaultMessage(), LocalDateTime.now())).toList();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exceptionResponseDtos);
     }
 
 
