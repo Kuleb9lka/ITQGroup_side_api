@@ -6,6 +6,7 @@ import com.ITQGroup.dto.DocumentBatchCreateRequestDto;
 import com.ITQGroup.dto.DocumentShortResponseDto;
 import com.ITQGroup.service.DocumentService;
 import com.ITQGroup.util.DocumentBatchCreationUtil;
+import com.ITQGroup.util.TimeUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class DocumentServiceImpl implements DocumentService {
 
         long end = System.nanoTime();
 
-        log.info("Exit batchDocumentsCreation() method. Execution time: {}", end - start);
+        log.info("Exit batchDocumentsCreation() method. Execution time: {}", TimeUtil.formatNanos(end - start));
 
         return documentShortResponseDtos;
     }
