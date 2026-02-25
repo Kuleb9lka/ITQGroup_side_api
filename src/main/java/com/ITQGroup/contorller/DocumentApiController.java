@@ -30,7 +30,7 @@ public class DocumentApiController implements DocumentApi {
         return requestRunnerService.run(dto.getThreads(), dto.getAttempts(), dto.getAuthorId(), dto.getDocumentId());
     }
 
-    @PostMapping("/batch-create")
+    @PostMapping("/file-create")
     public List<DocumentShortResponseDto> docsBatchCreate() {
         return documentService.batchDocumentsCreation();
     }
