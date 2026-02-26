@@ -2,7 +2,7 @@ package com.ITQGroup.constant;
 
 public final class ExceptionConstant {
 
-    public static final String NEGATIVE_FILE_QUANTITY = "File quantity can't be equals zero or less: ";
+    public static final String NEGATIVE_FILE_QUANTITY = "File quantity can't be negative or zero: ";
 
     public static final String FAILED_TO_READ_FILE = "Failed to read document file quantity: ";
 
